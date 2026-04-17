@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI ToolVerse — Find the Right AI Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-noise"></div>
+  <div class="aurora">
+    <div class="aurora-blob a1"></div>
+    <div class="aurora-blob a2"></div>
+    <div class="aurora-blob a3"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="top">
+    <div class="container nav">
+      <a href="#top" class="logo-wrap">
+        <div class="logo-mark">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" fill="url(#lg1)" opacity="0.9"/>
+            <text x="20" y="26" text-anchor="middle" font-size="16" font-weight="800" fill="white" font-family="Syne">AI</text>
+            <defs>
+              <linearGradient id="lg1" x1="0" y1="0" x2="40" y2="40">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">ToolVerse</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#categories">Categories</a>
+        <a href="#tools">Directory</a>
+        <a href="#compare-section">Compare</a>
+      </nav>
+
+      <button class="compare-nav-btn" onclick="toggleComparePanel()">
+        <span class="compare-count" id="compareCount">0</span>
+        Compare Tools
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top-hero">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>50+ AI tools, organized</span>
+          </div>
+          <h1 class="hero-title">
+            Find the <em>right</em><br>AI tool for<br>
+            <span class="rotating-word" id="rotatingWord">coding</span>
+          </h1>
+          <p class="hero-sub">Stop guessing. Browse every major AI tool by category, understand what each one does best, and compare side-by-side before you commit.</p>
+
+          <div class="search-wrap">
+            <div class="search-field">
+              <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input type="text" id="searchInput" placeholder="Search ChatGPT, Cursor, Runway…" autocomplete="off" />
+              <button id="clearSearch" class="clear-btn" title="Clear">✕</button>
+            </div>
+          </div>
+
+          <div class="chip-row" id="quickChips">
+            <button class="chip active" data-category="All">All</button>
+            <button class="chip" data-category="Research">Research</button>
+            <button class="chip" data-category="Coding">Coding</button>
+            <button class="chip" data-category="Writing">Writing</button>
+            <button class="chip" data-category="Image">Image</button>
+            <button class="chip" data-category="Video">Video</button>
+            <button class="chip" data-category="Productivity">Productivity</button>
+            <button class="chip" data-category="Audio">Audio</button>
+            <button class="chip" data-category="Design">Design</button>
+            <button class="chip" data-category="Presentation">Presentation</button>
+            <button class="chip" data-category="Marketing">Marketing</button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="stats-mosaic">
+            <div class="mosaic-card big">
+              <div class="mosaic-number" id="toolCount">55</div>
+              <div class="mosaic-label">AI Tools</div>
+              <div class="mosaic-glow"></div>
+            </div>
+            <div class="mosaic-card">
+              <div class="mosaic-number">11</div>
+              <div class="mosaic-label">Categories</div>
+            </div>
+            <div class="mosaic-card accent">
+              <div class="mosaic-icon">⚡</div>
+              <div class="mosaic-label">Instant<br>Filtering</div>
+            </div>
+            <div class="mosaic-card">
+              <div class="mosaic-icon">⚖️</div>
+              <div class="mosaic-label">Side-by-side<br>Compare</div>
+            </div>
+            <div class="mosaic-card span2">
+              <div class="trending-tools" id="trendingScroll">
+                <span>🔥 Trending:</span>
+                <div class="trend-pills">
+                  <span class="tpill">ChatGPT</span>
+                  <span class="tpill">Cursor</span>
+                  <span class="tpill">Midjourney</span>
+                  <span class="tpill">Runway</span>
+                  <span class="tpill">Gamma</span>
+                  <span class="tpill">NotebookLM</span>
+                  <span class="tpill">Bolt</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-hd">
+          <div class="sh-left">
+            <span class="section-tag">Browse by goal</span>
+            <h2>What do you want to do?</h2>
+          </div>
+          <p class="sh-text">Each category contains the best tools for that specific purpose — no fluff.</p>
+        </div>
+        <div class="cat-grid" id="categoryGrid">
+          <button class="cat-card active" data-category="All"><span class="cat-ico">🌐</span><span class="cat-name">All Tools</span><span class="cat-count" data-cat="All">55</span></button>
+          <button class="cat-card" data-category="Research"><span class="cat-ico">🔎</span><span class="cat-name">Research</span><span class="cat-count" data-cat="Research"></span></button>
+          <button class="cat-card" data-category="Coding"><span class="cat-ico">💻</span><span class="cat-name">Coding</span><span class="cat-count" data-cat="Coding"></span></button>
+          <button class="cat-card" data-category="Writing"><span class="cat-ico">✍️</span><span class="cat-name">Writing</span><span class="cat-count" data-cat="Writing"></span></button>
+          <button class="cat-card" data-category="Image"><span class="cat-ico">🎨</span><span class="cat-name">Image</span><span class="cat-count" data-cat="Image"></span></button>
+          <button class="cat-card" data-category="Video"><span class="cat-ico">🎬</span><span class="cat-name">Video</span><span class="cat-count" data-cat="Video"></span></button>
+          <button class="cat-card" data-category="Audio"><span class="cat-ico">🎙️</span><span class="cat-name">Audio</span><span class="cat-count" data-cat="Audio"></span></button>
+          <button class="cat-card" data-category="Design"><span class="cat-ico">🧩</span><span class="cat-name">Design</span><span class="cat-count" data-cat="Design"></span></button>
+          <button class="cat-card" data-category="Productivity"><span class="cat-ico">📚</span><span class="cat-name">Productivity</span><span class="cat-count" data-cat="Productivity"></span></button>
+          <button class="cat-card" data-category="Presentation"><span class="cat-ico">📊</span><span class="cat-name">Presentation</span><span class="cat-count" data-cat="Presentation"></span></button>
+          <button class="cat-card" data-category="Marketing"><span class="cat-ico">📣</span><span class="cat-name">Marketing</span><span class="cat-count" data-cat="Marketing"></span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS GRID -->
+    <section class="section tools-section" id="tools">
+      <div class="container">
+        <div class="section-hd tools-hd">
+          <div class="sh-left">
+            <span class="section-tag">Tool directory</span>
+            <h2>Explore the collection</h2>
+          </div>
+          <div class="tools-meta-bar">
+            <div class="result-tag">
+              <span id="activeCategory">All</span> — <strong id="resultsCount">0 tools</strong>
+            </div>
+            <div class="view-toggle">
+              <button class="vt-btn active" id="gridView" title="Grid view">⊞</button>
+              <button class="vt-btn" id="listView" title="List view">☰</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="toolsGrid" class="tools-grid"></div>
+
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">🔍</div>
+          <h3>No tools found</h3>
+          <p>Try a different search term or category.</p>
+          <button onclick="document.getElementById('clearSearch').click()" class="pill-btn">Clear search</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARE SECTION ANCHOR -->
+    <section class="section" id="compare-section">
+      <div class="container">
+        <div class="section-hd">
+          <div class="sh-left">
+            <span class="section-tag">Side-by-side</span>
+            <h2>Compare Tools</h2>
+          </div>
+          <p class="sh-text">Select up to 3 tools using the <strong>+ Compare</strong> button on any card, then see them compared here.</p>
+        </div>
+        <div id="compareArea" class="compare-empty-hint">
+          <div class="compare-hint-icon">⚖️</div>
+          <p>Add tools to compare using the <strong>+ Compare</strong> button on tool cards above.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section features-section" id="features">
+      <div class="container">
+        <div class="section-hd centered">
+          <span class="section-tag">Why use this</span>
+          <h2>Built for real decisions</h2>
+        </div>
+        <div class="feature-row">
+          <div class="feat">
+            <div class="feat-ico">⚡</div>
+            <h3>Instant filtering</h3>
+            <p>Search and filter 55+ tools in real time — no page reloads, no waiting.</p>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">⚖️</div>
+            <h3>Side-by-side compare</h3>
+            <p>Add up to 3 tools and see every attribute laid out next to each other.</p>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">🎯</div>
+            <h3>Purpose-first navigation</h3>
+            <p>Find tools by what you actually want to do, not by random discovery.</p>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">🚀</div>
+            <h3>Direct links</h3>
+            <p>One click takes you straight to the official website for each tool.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- COMPARE FLOATING PANEL -->
+  <div class="compare-panel hidden" id="comparePanel">
+    <div class="cp-header">
+      <span class="cp-title">⚖️ Comparing <span id="cpCount">0</span> tools</span>
+      <div class="cp-actions">
+        <button class="cp-view-btn" onclick="scrollToCompare()">View comparison ↓</button>
+        <button class="cp-close" onclick="toggleComparePanel()">✕</button>
+      </div>
+    </div>
+    <div class="cp-slots" id="cpSlots"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">AI ToolVerse</span>
+        <p>Organized AI tool discovery for students, creators, coders, and teams.</p>
+      </div>
+      <p class="footer-built">Built with HTML, CSS & JS</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
